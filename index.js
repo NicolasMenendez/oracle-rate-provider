@@ -35,7 +35,8 @@ async function main(){
 
   for (;;) {
 
-    for (let signer of signers) {
+    for (let signer of signers) 
+    {
       provider.provideRates(signer);
     }
 

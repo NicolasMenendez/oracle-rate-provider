@@ -13,7 +13,6 @@ module.exports.instanceOracles = async (oracleFactory) => {
 
   const symbols = new Set(
     env.signersData
-      .reduce((prev, x) => prev.concat(x))
       .map(x => x.currency)
   );
 
@@ -36,11 +35,11 @@ module.exports.instanceOracles = async (oracleFactory) => {
 module.exports.instanceSigners = async (pks) => {
   if (!(pks && pks.length)) throw new Error('There are no private keys to instance the signers: ' + pks);
 
-  if (pks.length !== env.signersData.length) throw new Error(
-    'The length of the signersData must be equal than the pks: \n' +
-    '\t' + pks.length + ' pks length\n' +
-    '\t' + env.signersData.length + ' env.signersData length'
-  );
+  // if (pks.length !== env.signersData.length) throw new Error(
+  //   'The length of the signersData must be equal than the pks: \n' +
+  //   '\t' + pks.length + ' pks length\n' +
+  //   '\t' + env.signersData.length + ' env.signersData length'
+  // );
 
   const signers = [];
   for (let i = 0; i < pks.length; i++) {
@@ -49,7 +48,7 @@ module.exports.instanceSigners = async (pks) => {
     if(this.w3.utils.isHexStrict(pk)) {
       const signer = this.w3.eth.accounts.privateKeyToAccount(pk);
       this.w3.eth.accounts.wallet.add(signer);
-      signer.data = env.signersData[i];
+      signer.data = env.signersData;
       signers.push(signer);
     } else {
       console.log('The private key its not valid: ' + pk);
