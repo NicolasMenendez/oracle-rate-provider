@@ -2,6 +2,8 @@ const Binance = require('./markets/Binance.js');
 const Uniswap = require('./markets/Uniswap.js');
 const HuobiPro = require('./markets/HuobiPro.js');
 const Bittrex = require('./markets/Bittrex.js');
+const Upbit = require('./markets/Upbit.js');
+const HitBTC = require('./markets/HitBTC.js');
 
 module.exports = class MarketsManager {
   constructor(w3) {
@@ -15,6 +17,8 @@ module.exports = class MarketsManager {
     this.markets['uniswap'] = await new Uniswap(this.w3).init();
     this.markets['huobiPro'] = await new HuobiPro(this.w3, 'huobipro');
     this.markets['bittrex'] = await new Bittrex(this.w3, 'bittrex');
+    this.markets['upbit'] = await new Upbit(this.w3, 'upbit');
+    this.markets['hitbtc'] = await new HitBTC(this.w3, 'hitbtc');
     // TODO
     //markets['bitfinex'] = new Bitfinex(w3, 'bitfinex');
     //markets['gateio'] = new Gateio(w3, 'gateio');

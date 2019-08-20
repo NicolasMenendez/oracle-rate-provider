@@ -13,7 +13,7 @@ const signersData = [
     },
     {
       currency: 'BTC',
-      exchangeId: 'huobiPro',
+      exchangeId: 'hitbtc',
     }
   ],
   [
@@ -43,8 +43,28 @@ const signersData = [
     },
     {
       currency: 'BTC',
+      exchangeId: 'upbit',
+    },
+  ],
+  [
+    {
+      currency: 'ETH',
+      exchangeId: 'huobiPro',
+    },
+    {
+      currency: 'BTC',
+      exchangeId: 'bittrex',
+    },
+  ],
+  [
+    {
+      currency: 'ETH',
       exchangeId: 'binance',
     },
+    {
+      currency: 'BTC',
+      exchangeId: 'hitbtc',
+    }
   ],
   [
     {
@@ -65,5 +85,5 @@ module.exports = {
   oracle: ropstenContracts.oracle,
   signersData: signersData,
   markets: ropstenContracts.markets,
-  wait: 5 * 60 * 1000 // 15 min
+  wait: 3 * 60 * 1000 // 15 min
 };
