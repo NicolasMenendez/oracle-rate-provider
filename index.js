@@ -40,6 +40,7 @@ async function main(){
       provider.provideRates(signer);
     }
 
+    console.log('Env wait', process.env.WAIT_TIME);
     console.log('Wait: ' + env.wait);
     await sleep(env.wait);
 
