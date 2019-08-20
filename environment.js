@@ -23,5 +23,5 @@ module.exports = {
   oracle: ropstenContracts.oracle,
   signersData: signersData,
   markets: ropstenContracts.markets,
-  wait: 5 * 60 * 1000 // 15 min
+  wait: 1 * 60 * 1000 // 15 min
 };

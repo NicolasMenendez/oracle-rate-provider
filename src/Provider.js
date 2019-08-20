@@ -1,5 +1,5 @@
 const MarketsManager = require('./MarketsManager.js');
-const market = require('./markets/Market.js');
+
 
 module.exports = class Provider {
   constructor(w3, oracleFactory, oracles) {
@@ -7,7 +7,10 @@ module.exports = class Provider {
     this.oracleFactory = oracleFactory;
     this.oracles = oracles;
     this.MarketsManager = null;
-    this.bn = market.bn;
+  }
+
+  bn (number) {
+    return this.w3.utils.toBN(number);
   }
 
   async init() {
@@ -25,7 +28,12 @@ module.exports = class Provider {
       rateLen % 2 === 0 // is even
     ) {
       // average of two middle numbers
-      median = this.bn(rates[rateLen / 2 - 1] + rates[rateLen / 2]) / this.bn(2);
+      const num1 = this.bn(rates[this.bn(rateLen).div(this.bn(2)) - 1]);
+      const num2 = this.bn(rates[this.bn(rateLen).div(this.bn(2))]);
+
+      median =  (num1.add(num2)).div(this.bn(2)).toString();
+
+      console.log('Median', median);
     } else { // is odd
       // middle number only
       median = rates[(rateLen - 1) / 2];
