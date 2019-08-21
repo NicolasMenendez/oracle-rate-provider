@@ -1,8 +1,44 @@
 version: '3'
 services:
-  provider:
-    image: . 
+  provider_1:
+    image: provider 
     environment:  
       - WAIT=${WAIT_TIME}
       - PK=${PRIVATE_KEY}
       - SLEEP_FIRST=${SLEEP_BEFORE_START}
+  provider_2:
+    image: provider 
+    environment:  
+      - WAIT=${WAIT_TIME_2}
+      - PK=${PRIVATE_KEY_2}
+      - SLEEP_FIRST=${SLEEP_BEFORE_START_2}
+  provider_3:
+    image: provider 
+    environment:  
+      - WAIT=${WAIT_TIME_3}
+      - PK=${PRIVATE_KEY_3}
+      - SLEEP_FIRST=${SLEEP_BEFORE_START_3}
+  provider_4:
+    image: provider 
+    environment:  
+      - WAIT=${WAIT_TIME_4}
+      - PK=${PRIVATE_KEY_4}
+      - SLEEP_FIRST=${SLEEP_BEFORE_START_4}
+  provider_5:
+    image: provider 
+    environment:  
+      - WAIT=${WAIT_TIME_5}
+      - PK=${PRIVATE_KEY_5}
+      - SLEEP_FIRST=${SLEEP_BEFORE_START_5}              
+  provider_6:
+    image: provider 
+    environment:  
+      - WAIT=${WAIT_TIME_6}
+      - PK=${PRIVATE_KEY_6}
+      - SLEEP_FIRST=${SLEEP_BEFORE_START_6}      
+  provider_7:
+    image: provider 
+    environment:  
+      - WAIT=${WAIT_TIME_7}
+      - PK=${PRIVATE_KEY_7}
+      - SLEEP_FIRST=${SLEEP_BEFORE_START_7}
