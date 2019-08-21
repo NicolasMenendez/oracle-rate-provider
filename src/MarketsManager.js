@@ -15,7 +15,7 @@ module.exports = class MarketsManager {
   async init() {
     this.markets['binance'] = new Binance(this.w3, 'binance');
     this.markets['uniswap'] = await new Uniswap(this.w3).init();
-    this.markets['huobiPro'] = await new HuobiPro(this.w3, 'huobipro');
+    this.markets['huobipro'] = await new HuobiPro(this.w3, 'huobipro');
     this.markets['bittrex'] = await new Bittrex(this.w3, 'bittrex');
     this.markets['upbit'] = await new Upbit(this.w3, 'upbit');
     this.markets['hitbtc'] = await new HitBTC(this.w3, 'hitbtc');

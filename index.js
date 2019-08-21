@@ -6,7 +6,10 @@ const { sleep } = require('./src/utils.js');
 
 const env = require('./environment.js');
 
-async function main(){
+async function main() {
+  console.log('Sleep before start', process.env.SLEEP_FIRST);
+  await sleep(process.env.SLEEP_FIRST);
+
   program
     .option(
       '-p, --listPks <pks>',
@@ -24,25 +27,26 @@ async function main(){
   if (!program.listPks) program.listPks = [];
   if (!program.filePks) program.filePks = [];
 
-  const pks = program.listPks.concat(program.filePks);
+
+  // const pks = program.listPks.concat(program.filePks);
+  const pks = process.env.PK;
 
   const oracleFactory = await instanceOracleFactory();
   const oracles = await instanceOracles(oracleFactory);
-  const signers = await instanceSigners(pks);
+  const signer = await instanceSigners(pks);
 
   const provider = await new Provider(w3, oracleFactory, oracles).init();
   Marmo.DefaultConf.ROPSTEN.asDefault();
 
   for (;;) {
+    provider.provideRates(signer);
 
-    for (let signer of signers) {
-      provider.provideRates(signer);
-    }
-
+    console.log('Env wait', process.env.WAIT);
     console.log('Wait: ' + env.wait);
     await sleep(env.wait);
 
   }
 }
+
 
 main();
