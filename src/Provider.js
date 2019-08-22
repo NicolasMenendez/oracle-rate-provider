@@ -95,8 +95,9 @@ module.exports = class Provider {
         { from: signer.address }
       );
       // console.log('GasEstimate: ', gasEstimate);
-      // 10% more than gas estimate
-      const moreGasEstimate = (gasEstimate * 1.5).toFixed(0);
+      // 20% more than gas estimate 
+      // FIXME
+      const moreGasEstimate = (gasEstimate * 1.2).toFixed(0);
       // console.log('MoreGasEstimate: ', moreGasEstimate);
       const log = 'Provide(signer: ' + signer.address + ', rate: ' + medianRate + ')';
 
